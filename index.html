@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神经同步 Neural Sync</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+        
+        #canvas {
+            display: block;
+            cursor: crosshair;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .control-group input, .control-group select {
+            width: 200px;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        
+        .control-group button {
+            width: 100%;
+            padding: 8px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .control-group button:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+        }
+        
+        .info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label>节点数量</label>
+            <input type="range" id="nodeCount" min="20" max="200" value="80">
+            <span id="nodeCountValue">80</span>
+        </div>
+        
+        <div class="control-group">
+            <label>连接距离</label>
+            <input type="range" id="connectionDistance" min="50" max="200" value="100">
+            <span id="connectionDistanceValue">100</span>
+        </div>
+        
+        <div class="control-group">
+            <label>同步强度</label>
+            <input type="range" id="syncStrength" min="0.1" max="2" step="0.1" value="1">
+            <span id="syncStrengthValue">1.0</span>
+        </div>
+        
+        <div class="control-group">
+            <label>动画速度</label>
+            <input type="range" id="animationSpeed" min="0.1" max="3" step="0.1" value="1">
+            <span id="animationSpeedValue">1.0</span>
+        </div>
+        
+        <div class="control-group">
+            <button id="resetBtn">重置网络</button>
+        </div>
+        
+        <div class="control-group">
+            <button id="pulseBtn">发送脉冲</button>
+        </div>
+    </div>
+    
+    <div class="info">
+        <div>神经同步可视化</div>
+        <div>点击画布添加节点</div>
+        <div>节点会自动连接和同步</div>
+    </div>
+    
+    <script src="neural-sync.js"></script>
+</body>
+</html>
